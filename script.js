@@ -21,13 +21,14 @@ function playRound(playerSelection,computerSelection) {
     return a
 }
 
-function game() {
+function game(btnSelected) {
     let c = 0;
     let p = 0;
-    // debugger;
-    for (let i = 1; i < 6; i++) {
-        let input = prompt("Rock, Paper or Scissors?");
-        let a = input.toLowerCase();
+//    debugger;
+    for (let i = 0; i < 5; i++) {
+//        let input = prompt("Rock, Paper or Scissors?");
+//        let a = input.toLowerCase();
+        let a = btnSelected;
         let b = computerPlay();
         if (playRound(a,b) == "Computer wins"){c++}
         else if (playRound(a,b) == "Tie"){c++;p++}
@@ -36,3 +37,21 @@ function game() {
     };
     return c+" - "+p;
 }
+
+const container = document.querySelector('#container');
+
+const btnRock = document.querySelector('#btnRock');
+btnRock.addEventListener('click', () => {
+    container.innerHTML = 'Martin ' + game('rock') + ' Computer'
+//    console.log(game('rock'));
+});
+
+const btnPaper = document.querySelector('#btnPaper');
+btnPaper.addEventListener('click', () => {
+    container.innerHTML = 'Martin ' + game('paper') + ' Computer'
+});
+
+const btnScissor = document.querySelector('#btnScissor');
+btnScissor.addEventListener('click', () => {
+    container.innerHTML = 'Martin ' + game('scissor') + ' Computer'
+});
